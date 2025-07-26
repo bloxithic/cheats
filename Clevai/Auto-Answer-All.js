@@ -1,1 +1,76 @@
-function _0x5309(_0x26c651,_0x37ff04){const _0x8f97ea=_0x8f97();return _0x5309=function(_0x53094d,_0x140a7e){_0x53094d=_0x53094d-0x1bc;let _0x20d8a6=_0x8f97ea[_0x53094d];return _0x20d8a6;},_0x5309(_0x26c651,_0x37ff04);}(function(_0x17a201,_0x372e49){const _0x4b92f9=_0x5309,_0x1be0a1=_0x17a201();while(!![]){try{const _0x27b2e1=-parseInt(_0x4b92f9(0x1cc))/0x1*(-parseInt(_0x4b92f9(0x1c7))/0x2)+-parseInt(_0x4b92f9(0x1c8))/0x3+-parseInt(_0x4b92f9(0x1c6))/0x4+-parseInt(_0x4b92f9(0x1bd))/0x5+-parseInt(_0x4b92f9(0x1c0))/0x6+parseInt(_0x4b92f9(0x1c5))/0x7*(-parseInt(_0x4b92f9(0x1c9))/0x8)+parseInt(_0x4b92f9(0x1cd))/0x9;if(_0x27b2e1===_0x372e49)break;else _0x1be0a1['push'](_0x1be0a1['shift']());}catch(_0x3b22fc){_0x1be0a1['push'](_0x1be0a1['shift']());}}}(_0x8f97,0x7b223),((async()=>{const _0x6ac5e2=(_0x437556,_0x1921e5=0x1388)=>new Promise((_0x6fdad7,_0x17ef62)=>{const _0x264c66=_0x5309,_0x5099d1=Date[_0x264c66(0x1c1)](),_0x162b07=()=>{const _0xf283e3=_0x264c66,_0x48daa2=document['querySelector'](_0x437556);if(_0x48daa2)return _0x6fdad7(_0x48daa2);if(Date['now']()-_0x5099d1>_0x1921e5)return _0x17ef62(_0xf283e3(0x1c3)+_0x437556);requestAnimationFrame(_0x162b07);};_0x162b07();}),_0x10e0b3=_0x4ef676=>new Promise(_0x36f4a7=>setTimeout(_0x36f4a7,_0x4ef676));async function _0x3416da(){const _0xe8dc39=_0x5309;for(;;){try{const _0x2ca43a=await _0x6ac5e2('div[id^=\x22input_correct-option-\x22]',0x3e8);_0x2ca43a[_0xe8dc39(0x1be)](),await _0x10e0b3(0xc8);const _0x5375b1=await _0x6ac5e2(_0xe8dc39(0x1ca),0x3e8);_0x5375b1[_0xe8dc39(0x1be)](),await _0x10e0b3(0xc8);const _0x6e0e55=await _0x6ac5e2(_0xe8dc39(0x1ca),0x3e8);_0x6e0e55['click'](),await _0x10e0b3(0x190);}catch{break;}}try{(await _0x6ac5e2(_0xe8dc39(0x1c2),0xbb8))[_0xe8dc39(0x1be)]();}catch{}}const _0x568b05=async()=>{const _0x3924cf=_0x5309;let _0x3d34e2=0x0;try{(await _0x6ac5e2(_0x3924cf(0x1c4),0x1388))[_0x3924cf(0x1be)](),await _0x10e0b3(0x1f4);}catch{return alert(_0x3924cf(0x1cb)),void 0x0;}for(;;){await _0x3416da(),_0x3d34e2++;const _0x4684d0='a[id=\x22'+_0x3d34e2+'\x22].exercise-one-content';try{await _0x10e0b3(0x2bc),(await _0x6ac5e2(_0x4684d0,0x1f4))['click'](),await _0x10e0b3(0x190);}catch{break;}}try{(await _0x6ac5e2(_0x3924cf(0x1bf),0xbb8))[_0x3924cf(0x1be)]();}catch{}alert(_0x3924cf(0x1bc));};await _0x568b05();})()));function _0x8f97(){const _0x21b53c=['No\x20quizzes\x20found.\x20Are\x20you\x20sure\x20you\x20executed\x20the\x20script\x20on\x20the\x20homepage?','1yTNoIo','23417109blelGv','All\x20quizzes\x20completed.','971245mqFGtn','click','div.coaching-link-not-btn','3024030dMRqtH','now','p.link-btn','Timeout\x20waiting\x20for\x20','a#action-click_lo_common_0.exercise-one-content','35539McZkyW','1037388tzRQdu','159778aFHepZ','2547639YynzJI','584MUOvhQ','span.link-btn'];_0x8f97=function(){return _0x21b53c;};return _0x8f97();}
+(async () => { 
+  const waitFor = (selector, timeout = 5000) => new Promise((resolve, reject) => {
+    const startTime = Date.now();
+    const check = () => {
+      const el = document.querySelector(selector);
+      if (el) return resolve(el);
+      if (Date.now() - startTime > timeout) return reject(`Timeout waiting for ${selector}`);
+      requestAnimationFrame(check);
+    };
+    check();
+  });
+
+  const wait = ms => new Promise(resolve => setTimeout(resolve, ms));
+
+  async function completeOneQuiz() {
+    while (true) {
+      try {
+        const question = await waitFor('div[id^="input_correct-option-"]', 1000);
+        question.click();
+        await wait(200);
+
+        const button1 = await waitFor("span.link-btn", 1000);
+        button1.click();
+        await wait(200);
+
+        const button2 = await waitFor("span.link-btn", 1000);
+        button2.click();
+        await wait(400);
+      } catch {
+        break;
+      }
+    }
+
+    try {
+      const finalBtn = await waitFor("p.link-btn", 3000);
+      finalBtn.click();
+    } catch {}
+  }
+
+  const completeAllQuizzes = async () => {
+    let index = 0;
+
+    try {
+      const first = await waitFor("a#action-click_lo_common_0.exercise-one-content", 5000);
+      first.click();
+      await wait(500);
+    } catch {
+      alert("No quizzes found. Are you sure you executed the script on the homepage?");
+      return;
+    }
+
+    while (true) {
+      await completeOneQuiz();
+      index++;
+      const selector = `a[id="${index}"].exercise-one-content`;
+
+      try {
+        await wait(700);
+        const next = await waitFor(selector, 500);
+        next.click();
+        await wait(400);
+      } catch {
+        break;
+      }
+    }
+
+    try {
+      const final = await waitFor("div.coaching-link-not-btn", 3000);
+      final.click();
+    } catch {}
+
+    alert("All quizzes completed.");
+  };
+
+  await completeAllQuizzes();
+})();
