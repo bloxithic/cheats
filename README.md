@@ -1,6 +1,6 @@
 ## 📖 How to Use
 
-### ✅ Bookmark Method (Recommended)
+### 🔖 Bookmark Method
 
 * Create a new bookmark in your browser
 * Edit the bookmark and paste your script into the URL field like this:
@@ -11,18 +11,6 @@ javascript:(function(){/* your script code here */})();
 
 * Go to the website you want to run the script on
 * Click the bookmark to execute it
-
----
-
-### ⚠️ Address Bar Method (Not Recommended)
-
-* Paste your script in the address bar:
-
-```js
-javascript:(function(){/* your script code here */})();
-```
-
-* Most browsers block `javascript:` URLs — you might need to type `javascript:` manually if it’s removed automatically
 
 ---
 
