@@ -4,7 +4,7 @@
     const check = () => {
       const el = document.querySelector(selector);
       if (el) return resolve(el);
-      if (Date.now() - startTime > timeout) return reject(`Timeout waiting for ${selector}`);
+      if (Date.now() - startTime > timeout) return reject(`Timeout waiting for ${selector}.`);
       requestAnimationFrame(check);
     };
     check();
