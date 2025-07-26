@@ -34,7 +34,7 @@ javascript:(function(){/* your script code here */})();
 
 ---
 
-### 🧷 Userscript Manager (e.g. Tampermonkey)
+## 🧷 Userscript Manager (e.g. Tampermonkey)
 
 * Install a userscript manager like Tampermonkey: [https://www.tampermonkey.net/](https://www.tampermonkey.net/)
 * Create a new script and paste your code inside the editor
@@ -42,7 +42,7 @@ javascript:(function(){/* your script code here */})();
 
 ---
 
-## ⚠️ Disclaimers
+### ⚠️ Disclaimers
 
 * These scripts are for personal and educational use only
 * Use them responsibly and at your own risk
