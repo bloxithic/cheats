@@ -5,7 +5,7 @@
 
 **2.** Edit the bookmark and paste your script into the URL field like this:
 
-javascript:(function(){/* your script code here */})();
+**javascript:(function(){/* your script code here */})();**
 
 **3.** Go to the website you want to run the script on
 
