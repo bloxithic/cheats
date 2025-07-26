@@ -1,4 +1,5 @@
-📖 How to Use
+📖 How to Use Scripts
+
 ✅ Bookmark Method (Recommended)
 1. Create a new bookmark in your browser
 2. Edit the bookmark and paste your script into the URL field like this:
