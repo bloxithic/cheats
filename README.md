@@ -40,9 +40,9 @@ javascript:(function(){/* your script code here */})();
 * Create a new script and paste your code inside the editor
 * Save and enable the script — it will run automatically on matching pages
 
---
+---
 
-### ⚠️ Disclaimers
+## ⚠️ Disclaimers
 
 * These scripts are for personal and educational use only
 * Use them responsibly and at your own risk
