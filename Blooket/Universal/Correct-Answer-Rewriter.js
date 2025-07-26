@@ -1,8 +1,7 @@
 setInterval(() => {
-	try {
-		const container = document.querySelector('#app > div > div');
-		const reactKey = Object.keys(container).find(k => k.startsWith('__reactContainer'));
-		const question = container[reactKey]?.memoizedState?.element?.props?.children?.[0]?._owner?.stateNode?.state?.question;
-		if (question) question.correctAnswers = question.answers;
-	} catch {}
+  try {
+    const root = Object.values(document.querySelector('#app > div > div'))[1];
+    const gameState = root.children[0]._owner.stateNode.state;
+    gameState.question.correctAnswers = gameState.question.answers;
+  } catch {}
 }, 100);
