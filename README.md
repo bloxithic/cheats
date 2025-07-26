@@ -1,4 +1,4 @@
-## 📖 How to Use
+### 📖 How to Use
 
 ### ✅ Bookmark Method (Recommended)
 
