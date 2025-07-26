@@ -1,7 +1,3 @@
-Here’s the final version using **dashes instead of bullets** and plain text formatting for easy copying:
-
----
-
 ## 📖 How to Use
 
 ### ✅ Bookmark Method (Recommended)
@@ -53,5 +49,3 @@ javascript:(function(){/* your script code here */})();
 * We are not responsible for misuse or any consequences that result from using these scripts
 
 ---
-
-Let me know if you want this in markdown (`README.md`) format too.
