@@ -1,17 +1,19 @@
 📖 **How to Use Scripts**
 
 ✅ **Bookmark Method (Recommended)**
+
 **1.** Create a new bookmark in your browser
 
 **2.** Edit the bookmark and paste your script into the URL field like this:
 
-**javascript:(function(){/* your script code here */})();**
+javascript:(function(){/* your script code here */})();
 
 **3.** Go to the website you want to run the script on
 
 **4.** Click the bookmark to execute it
 
 ⚠️ **Address Bar Method (Not Recommended)**
+
 **1.** Paste your script in the address bar:
 
 javascript:(function(){/* your script code here */})();
@@ -34,6 +36,7 @@ javascript:(function(){/* your script code here */})();
 **3.** Save and enable the script — it will run automatically on matching pages
 
 ⚠️ **Disclaimers**
+
 - These scripts are for personal and educational use only
   
 - Use them responsibly and at your own risk
