@@ -1,19 +1,5 @@
 ## 📖 How to Use
 
-### 🔖 Bookmark Method
-
-* Create a new bookmark in your browser
-* Edit the bookmark and paste your script into the URL field like this:
-
-```js
-javascript:(function(){/* your script code here */})();
-```
-
-* Go to the website you want to run the script on
-* Click the bookmark to execute it
-
----
-
 ### 🧪 Browser Console Method
 
 * Right-click the webpage and choose “Inspect” or press `F12`
