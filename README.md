@@ -42,7 +42,7 @@ javascript:(function(){/* your script code here */})();
 
 ---
 
-## ⚠️ Disclaimers
+### ⚠️ Disclaimers
 
 * These scripts are for personal and educational use only
 * Use them responsibly and at your own risk
