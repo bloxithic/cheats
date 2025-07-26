@@ -47,5 +47,3 @@ javascript:(function(){/* your script code here */})();
 * These scripts are for personal and educational use only
 * Use them responsibly and at your own risk
 * We are not responsible for misuse or any consequences that result from using these scripts
-
----
