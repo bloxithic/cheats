@@ -1,9 +1,4 @@
 # Website Cheats
-
-These cheats includes modified version of Blooket Cheats by 05Konz.
-
-**Modified by:** bloxithic
-
 ---
 
 ## 📖 How to Use
@@ -34,7 +29,7 @@ These cheats includes modified version of Blooket Cheats by 05Konz.
 
 ## 📜 License
 
-This project contains original code written by bloxithic, along with portions adapted from the Blooket Cheats project by 05Konz (licensed under AGPL-3.0).
+This project contains original code written by **bloxithic**, along with portions adapted from the Blooket Cheats project by **05Konz** (licensed under AGPL-3.0).
 
 This project is licensed under the **GNU Affero General Public License v3.0 (AGPL-3.0)**.
 You are free to **use**, **modify**, and **share** this code — provided that you also **share the complete source code** under the same license.
