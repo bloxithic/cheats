@@ -1,6 +1,6 @@
 # Website Cheats
 
-This is a script collection that includes modified version of Blooket Cheats by 05Konz, and some code from TheCinnamonToastCrunch.
+These cheats includes modified version of Blooket Cheats by 05Konz, and some code from TheCinnamonToastCrunch.
 
 **Modified by:** bloxithic
 
