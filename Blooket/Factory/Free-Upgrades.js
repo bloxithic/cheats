@@ -41,7 +41,6 @@
     const interval = setInterval(() => {
         try {
             const stateNode = getStateNode();
-            if (!stateNode?.state?.blooks) return;
 
             updatePrices(stateNode);
 
