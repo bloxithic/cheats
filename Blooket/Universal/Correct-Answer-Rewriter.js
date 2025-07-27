@@ -5,6 +5,6 @@ const interval = setInterval(() => {
     gameState.question.correctAnswers = gameState.question.answers;
   } catch (err) {
     clearInterval(interval);
-    alert("Failed to set correct answers.");
+    alert("Failed to rewrite correct answers.");
   }
 }, 100);
