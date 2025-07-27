@@ -48,4 +48,4 @@ This project includes code originally created by:
 - **05Konz**, from the [Blooket Cheats project](https://github.com/Blooket-Council/Blooket-Cheats) – Licensed under AGPL-3.0  
 - **TheCinnamonToastCrunch**, portions under the **BSD 3-Clause License**
 
-See the `NOTICE` file for full BSD license terms and attribution.
+See the [NOTICE](./NOTICE) file for full BSD license terms and attribution, or visit the [BSD 3-Clause license page](https://opensource.org/license/bsd-3-clause/).
