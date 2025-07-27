@@ -1,7 +1,6 @@
-## Website Cheats
+# Website Cheats
 
-### 📖 How to Use
-##
+## 📖 How to Use
 
 ### 🧪 Browser Console Method
 
@@ -27,7 +26,7 @@
 
 ---
 
-## 📜 License
+### 📜 License
 
 This project contains original code written by **bloxithic**, along with portions adapted from the Blooket Cheats project by **05Konz** (licensed under AGPL-3.0).
 
