@@ -2,7 +2,7 @@
  * Portions of this file are Copyright (c) 2023 TheCinnamonToastCrunch
  * Licensed under the BSD 3-Clause License
  * 
- * See the NOTICE file or https://opensource.org/licenses/BSD-3-Clause for details.
+ * See the (NOTICE)[github.com] file or https://opensource.org/licenses/BSD-3-Clause for details.
  */
 
 const interval = setInterval(() => {
