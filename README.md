@@ -1,6 +1,6 @@
-# Modified Blooket Cheats
+# loudstatic6's Scripts
 
-This is a modified version of Blooket Cheats by 05Konz, and includes code from TheCinnamonToastCrunch.
+This is a script collection that includes modified version of Blooket Cheats by 05Konz, and some code from TheCinnamonToastCrunch.
 
 **Modified by:** bloxithic
 
