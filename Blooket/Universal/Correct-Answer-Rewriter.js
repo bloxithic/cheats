@@ -34,7 +34,7 @@
       stateNode.forceUpdate?.();
     } catch {
       clearInterval(interval);
-      alert("Failed to rewrite correct answers");
+      alert("Failed to rewrite correct answers.");
     }
   }, 100);
 })();
