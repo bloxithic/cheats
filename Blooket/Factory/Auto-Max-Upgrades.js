@@ -27,22 +27,27 @@
         return val?.children?.[0]?._owner?.stateNode ? val.children[0]._owner.stateNode : getStateNode(r.querySelector(":scope>div"));
     };
 
-    const stateNode = getStateNode();
+    try {
+        const stateNode = getStateNode();
 
-    if (!stateNode?.state?.blooks) return alert("Couldn't find blooks.");
+        const maxBlooks = () => {
+            stateNode.state.blooks.forEach(b => b.level = 4);
+            stateNode.forceUpdate?.();
+        };
 
-    const maxBlooks = () => {
-        stateNode.state.blooks.forEach(b => b.level = 4);
-        stateNode.forceUpdate?.();
-    };
+        // Initial upgrade
+        maxBlooks();
 
-    maxBlooks();
-
-    let originalSetState = stateNode.setState.bind(stateNode);
-    stateNode.setState = (newState, ...rest) => {
-        if (newState?.blooks) {
-            newState.blooks.forEach(b => b.level = 4);
-        }
-        return originalSetState(newState, ...rest);
-    };
+        // Hook into setState to auto-upgrade new blooks
+        const originalSetState = stateNode.setState.bind(stateNode);
+        stateNode.setState = (newState, ...rest) => {
+            if (newState?.blooks) {
+                newState.blooks.forEach(b => b.level = 4);
+            }
+            return originalSetState(newState, ...rest);
+        };
+    } catch (err) {
+        alert("Failed to upgrade all blooks to max.");
+        console.error(err);
+    }
 })();
