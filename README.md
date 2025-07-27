@@ -1,6 +1,6 @@
 # Modified Blooket Cheats
 
-This is a modified version of [Blooket Cheats](https://github.com/Blooket-Council/Blooket-Cheats) originally created by 05Konz.
+This is a modified version of Blooket Cheats by 05Konz, and includes code from TheCinnamonToastCrunch.
 
 **Modified by:** bloxithic
 
