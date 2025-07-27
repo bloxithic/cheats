@@ -1,4 +1,4 @@
-# Blooket Cheats
+# Modified Blooket Cheats
 
 This is a modified version of Blooket Cheats by 05Konz, and includes code from TheCinnamonToastCrunch.
 
