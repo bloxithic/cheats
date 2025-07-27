@@ -2,7 +2,7 @@
  * @license AGPL-3.0
  * Website Cheats
  * 
- * This is script is a modified version of Blooket Cheats by 05Konz.
+ * This script is a modified version of Blooket Cheats by 05Konz.
  * Original source: https://github.com/Blooket-Council/Blooket-Cheats
  * 
  * Modifications made by bloxithic
