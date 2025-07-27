@@ -1,6 +1,6 @@
 /**
  * @license AGPL-3.0
- * loudstatic6's Scripts
+ * Website Cheats
  * 
  * This script is a modified version of Blooket Cheats by 05Konz.
  * Original source: https://github.com/Blooket-Council/Blooket-Cheats
