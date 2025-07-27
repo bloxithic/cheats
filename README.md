@@ -1,5 +1,4 @@
-# Website Cheats
----
+## Website Cheats
 
 ## 📖 How to Use
 
