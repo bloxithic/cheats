@@ -1,7 +1,6 @@
 ## Website Cheats
 
 ### 📖 How to Use
-
 ##
 
 ### 🧪 Browser Console Method
