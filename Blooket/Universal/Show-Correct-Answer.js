@@ -11,7 +11,7 @@
       });
     } catch (err) {
       clearInterval(loop);
-      alert("Failed to highlight answers.");
+      alert("Failed to show correct answers.");
     }
   }, 100);
 })();
