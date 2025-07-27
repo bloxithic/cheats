@@ -1,6 +1,6 @@
 # Website Cheats
 
-These cheats includes modified version of Blooket Cheats by 05Konz, and some code from TheCinnamonToastCrunch.
+These cheats includes modified version of Blooket Cheats by 05Konz.
 
 **Modified by:** bloxithic
 
@@ -34,20 +34,9 @@ These cheats includes modified version of Blooket Cheats by 05Konz, and some cod
 
 ## 📜 License
 
-Some scripts in this project were written originally by bloxithic and are licensed under AGPL-3.0.
+This project contains original code written by bloxithic, along with portions adapted from the Blooket Cheats project by 05Konz (licensed under AGPL-3.0).
 
-This project is licensed under the **GNU Affero General Public License v3.0 (AGPL-3.0)**. 
-You are free to use, modify, and share it — as long as you also share the full source code under the same license.
+This project is licensed under the **GNU Affero General Public License v3.0 (AGPL-3.0)**.
+You are free to **use**, **modify**, and **share** this code — provided that you also **share the complete source code** under the same license.
 
-See the [LICENSE](./LICENSE) file for full terms, or visit the [AGPL-3.0 site](https://www.gnu.org/licenses/agpl-3.0.html).
-
----
-
-## 📄 Notices
-
-This project includes code originally created by:
-
-- **05Konz**, from the [Blooket Cheats project](https://github.com/Blooket-Council/Blooket-Cheats) – Licensed under AGPL-3.0  
-- **TheCinnamonToastCrunch**, portions under the **BSD 3-Clause License**
-
-See the [NOTICE](./NOTICE) file for full BSD license terms and attribution, or visit the [BSD 3-Clause license page](https://opensource.org/license/bsd-3-clause/).
+See the [LICENSE](./LICENSE) file for full terms, or visit the [AGPL-3.0 site](https://www.gnu.org/licenses/agpl-3.0.html) for more details.
