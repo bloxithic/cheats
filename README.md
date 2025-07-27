@@ -37,8 +37,7 @@ This is a modified version of [Blooket Cheats](https://github.com/Blooket-Counci
 This project is licensed under the **GNU Affero General Public License v3.0 (AGPL-3.0)**.  
 You are free to use, modify, and share it — as long as you also share the full source code under the same license.
 
-See the `LICENSE` file for full terms:  
-🔗 [https://www.gnu.org/licenses/agpl-3.0.html](https://www.gnu.org/licenses/agpl-3.0.html)
+See the [LICENSE](./LICENSE) file for full terms.
 
 ---
 
