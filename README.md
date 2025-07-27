@@ -2,7 +2,7 @@
 
 This is a modified version of [Blooket Cheats](https://github.com/Blooket-Council/Blooket-Cheats) originally created by 05Konz.
 
-**Modified by:** skullblaster1337
+**Modified by:** bloxithic
 
 ---
 
