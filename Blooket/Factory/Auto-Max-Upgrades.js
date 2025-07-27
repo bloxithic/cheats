@@ -48,5 +48,6 @@
         };
     } catch (err) {
         alert("Failed to upgrade all blooks to max.");
+        return;
     }
 })();
