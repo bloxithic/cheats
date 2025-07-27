@@ -22,7 +22,7 @@
  */
 
 (() => {
-  const loop = setInterval(() => {
+  const interval = setInterval(() => {
     try {
       const stateNode = Object.values(document.querySelector("#app > div > div"))[1].children[0]._owner.stateNode;
       const question = stateNode.state.question || stateNode.props.client.question;
