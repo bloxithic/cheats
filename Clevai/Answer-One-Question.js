@@ -20,45 +20,34 @@
 */
 
 (async () => {
-  const waitFor = (selector, timeout = 5000) => new Promise((resolve) => {
-    const startTime = Date.now();
-    const check = () => {
-      const el = document.querySelector(selector);
-      if (el) return resolve(el);
-      if (Date.now() - startTime > timeout) {
-        alert(`Timeout waiting for ${selector}`);
-        return resolve(null); // resolve with null instead of rejecting
-      }
-      requestAnimationFrame(check);
-    };
-    check();
-  });
-
-  const wait = ms => new Promise(resolve => setTimeout(resolve, ms));
+  const wait = ms => new Promise(res => setTimeout(res, ms));
 
   async function completeQuiz() {
     let attempted = false;
-    while (true) {
-      const question = await waitFor('div[id^="input_correct-option-"]', 1000);
+
+    while (document.querySelector('div[id^="input_correct-option-"]')) {
+      const question = document.querySelector('div[id^="input_correct-option-"]');
       if (!question) break;
+
       question.click();
       attempted = true;
       await wait(200);
 
-      const button1 = await waitFor("span.link-btn", 1000);
+      const button1 = document.querySelector("span.link-btn");
       if (!button1) break;
       button1.click();
       await wait(200);
 
-      const button2 = await waitFor("span.link-btn", 1000);
+      const button2 = document.querySelector("span.link-btn");
       if (!button2) break;
       button2.click();
       await wait(300);
     }
+
     return attempted;
   }
 
-  completeQuiz().then(done => {
-    alert(done ? "Quiz completed." : "No questions found. Are you sure you executed the script inside the quiz?");
-  });
+  const result = await completeQuiz();
+  alert(result ? "Quiz completed." : "No questions found. Are you sure you executed the script inside the quiz?");
+  return;
 })();
