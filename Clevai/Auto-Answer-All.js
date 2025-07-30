@@ -20,15 +20,10 @@
 */
 
 (async () => { 
-  const waitFor = (selector, timeout = 5000) => new Promise(resolve => {
-    const startTime = Date.now();
+  const waitFor = (selector) => new Promise(resolve => {
     const check = () => {
       const el = document.querySelector(selector);
       if (el) return resolve(el);
-      if (Date.now() - startTime > timeout) {
-        alert(`Timeout waiting for ${selector}`);
-        return resolve(null);
-      }
       requestAnimationFrame(check);
     };
     check();
@@ -37,31 +32,31 @@
   const wait = ms => new Promise(resolve => setTimeout(resolve, ms));
 
   async function completeOneQuiz() {
-    while (true) {
-      const question = await waitFor('div[id^="input_correct-option-"]', 1000);
+    while (document.querySelector('div[id^="input_correct-option-"]')) {
+      const question = document.querySelector('div[id^="input_correct-option-"]');
       if (!question) break;
       question.click();
       await wait(200);
 
-      const button1 = await waitFor("span.link-btn", 1000);
+      const button1 = document.querySelector("span.link-btn");
       if (!button1) break;
       button1.click();
       await wait(200);
 
-      const button2 = await waitFor("span.link-btn", 1000);
+      const button2 = document.querySelector("span.link-btn");
       if (!button2) break;
       button2.click();
       await wait(400);
     }
 
-    const finalBtn = await waitFor("p.link-btn", 3000);
+    const finalBtn = document.querySelector("p.link-btn");
     if (finalBtn) finalBtn.click();
   }
 
   const completeAllQuizzes = async () => {
     let index = 0;
 
-    const first = await waitFor("a#action-click_lo_common_0.exercise-one-content", 5000);
+    const first = document.querySelector("a#action-click_lo_common_0.exercise-one-content");
     if (!first) {
       alert("No quizzes found. Are you sure you executed the script on the homepage?");
       return;
@@ -76,13 +71,13 @@
       const selector = `a[id="${index}"].exercise-one-content`;
 
       await wait(700);
-      const next = await waitFor(selector, 500);
+      const next = document.querySelector(selector);
       if (!next) break;
       next.click();
       await wait(400);
     }
 
-    const final = await waitFor("div.coaching-link-not-btn", 3000);
+    const final = document.querySelector("div.coaching-link-not-btn");
     if (final) final.click();
 
     alert("All quizzes completed.");
