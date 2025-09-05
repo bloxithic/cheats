@@ -1,59 +1,50 @@
+local KillAura, KillAuraDistance
+
+task.spawn(function()
+    while task.wait(0.1) do
+        if KillAura then
+            
+    end
+end)
+
 local WindUI = loadstring(game:HttpGet("https://github.com/Footagesus/WindUI/releases/latest/download/main.lua"))()
 
 local Window = WindUI:CreateWindow({
     Title = "Noxware",
     Icon = "moon",
     Author = "by Static",
-    Folder = "MySuperHub",
-    
-    -- ↓ This all is Optional. You can remove it.
-    Size = UDim2.fromOffset(580, 460),
-    Transparent = true,
-    Theme = "Dark",
-    Resizable = true,
-    SideBarWidth = 200,
-    BackgroundImageTransparency = 0.42,
-    HideSearchBar = true,
-    ScrollBarEnabled = false,
-    
-    -- ↓ Optional. You can remove it.
-    --[[ You can set 'rbxassetid://' or video to Background.
-        'rbxassetid://':
-            Background = "rbxassetid://", -- rbxassetid
-        Video:
-            Background = "video:YOUR-RAW-LINK-TO-VIDEO.webm", -- video 
-    --]]
-    
-    -- ↓ Optional. You can remove it.
-    User = {
-        Enabled = true,
-        Anonymous = true,
-        Callback = function()
-            print("clicked")
-        end,
-    },
-    
-    -- !  ↓  remove this all, 
-    -- !  ↓  if you DON'T need the key system
-    KeySystem = { 
-        -- ↓ Optional. You can remove it.
-        Key = { "1234", "5678" },
-        
-        Note = "Example Key System.",
-        
-        -- ↓ Optional. You can remove it.
-        Thumbnail = {
-            Image = "rbxassetid://",
-            Title = "Thumbnail",
-        },
-        
-        -- ↓ Optional. You can remove it.
-        URL = "YOUR LINK TO GET KEY (Discord, Linkvertise, Pastebin, etc.)",
-        
-        -- ↓ Optional. You can remove it.
-        SaveKey = false, -- automatically save and load the key.
-        
-        -- ↓ Optional. You can remove it.
-        -- API = {} ← Services. Read about it below ↓
-    },
+    Folder = "Noxware",
+})
+
+local MainTab = Window:Tab({
+    Title = "Main",
+    Icon = "house",
+})
+
+local KillAuraSection = MainTab:Section({ 
+    Title = "Kill Aura",
+    TextXAlignment = "Left",
+})
+
+local KillAuraToggle = MainTab:Toggle({
+    Title = "Enable Kill Aura",
+    Icon = "sword",
+    Default = false,
+    Callback = function(state)
+        KillAura = state
+    end
+})
+
+local Input = Tab:Input({
+    Title = "Input",
+    Desc = "Input Description",
+    Value = "Default value",
+    InputIcon = "bird",
+    Type = "Input", -- or "Textarea"
+    Placeholder = "Enter text...",
+    Callback = function(input)
+        if tonumber(input) then
+            KillAuraDistance = input
+                e
+    end
 })
