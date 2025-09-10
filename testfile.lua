@@ -743,6 +743,8 @@ local Quests = {
     }
 }
 
+local QuestsData = {QuestsNames, Quests}
+
 local Levels = {
     Bandit = {
         Enemy = "Bandit",
@@ -1150,8 +1152,6 @@ local Levels = {
         MaxLevel = 2450
     }
 }
-
-local QuestsData = {QuestsNames, Quests}
 
 QuestsData.Quests = Quests
 
