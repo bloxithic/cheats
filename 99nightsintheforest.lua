@@ -9,8 +9,7 @@ local hum = char:WaitForChild("Humanoid")
 local hrp = char:WaitForChild("HumanoidRootPart")
 
 local KillAura = false
-local KillAuraDistance = 0
-local tool
+local KillAuraDistance = 50
 
 local toolsDamageIDs = {
     ["Old Axe"] = "1_8982038982",
@@ -19,27 +18,6 @@ local toolsDamageIDs = {
     ["Chainsaw"] = "647_8992824875",
     ["Spear"] = "196_8999010016"
 }
-
-task.spawn(function()
-	while task.wait(0.1) do
-		if KillAura then
-			tool = char:FindFirstChildOfClass("Tool")
-			if tool and toolsDamageIDs[tool.Name] then
-					for _, mob in ipairs(workspace.Characters:GetChildren()) do
-	                    if mob:IsA("Model") then
-	                        local part = mob:FindFirstChildWhichIsA("BasePart")
-	                        if part and (part.Position - hrp.Position).Magnitude <= radius then
-	                            pcall(function()
-	                                game:GetService("ReplicatedStorage"):WaitForChild("RemoteEvents").ToolDamageObject:InvokeServer(mob, tool, damageID, CFrame.new(part.Position))
-	                            end)
-	                        end
-	                    end
-					end
-                end
-		    end
-		end
-	end
-end)
 
 local Window = WindUI:CreateWindow({
     Title = "Noxware",
