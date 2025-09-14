@@ -26,23 +26,27 @@ local function getClosestChest(position)
     return closest
 end
 
--- Tween to chest
+-- Tween to chest with mid-tween check
 local function tweenToChest(chest)
     local character = LocalPlayer.Character or LocalPlayer.CharacterAdded:Wait()
     local root = character:WaitForChild("HumanoidRootPart")
     if not chest or not chest.PrimaryPart then return end
 
-    local targetPos = chest.PrimaryPart.Position + Vector3.new(0, 5, 0)
-    local distance = (root.Position - targetPos).Magnitude
-    local travelTime = distance / SPEED
+    while chest and chest.Parent and not visitedChests[chest] do
+        local targetPos = chest.PrimaryPart.Position + Vector3.new(0, 5, 0)
+        local distance = (root.Position - targetPos).Magnitude
+        local travelTime = distance / SPEED
 
-    local tweenInfo = TweenInfo.new(travelTime, Enum.EasingStyle.Linear)
-    local tween = TweenService:Create(root, tweenInfo, {CFrame = CFrame.new(targetPos)})
+        local tweenInfo = TweenInfo.new(travelTime, Enum.EasingStyle.Linear)
+        local tween = TweenService:Create(root, tweenInfo, {CFrame = CFrame.new(targetPos)})
+        tween:Play()
+        tween.Completed:Wait()
 
-    tween:Play()
-    tween.Completed:Wait()
+        -- If chest was collected while moving, break and pick next
+        if not chest.Parent then break end
 
-    visitedChests[chest] = true
+        visitedChests[chest] = true
+    end
 end
 
 -- Server hop
