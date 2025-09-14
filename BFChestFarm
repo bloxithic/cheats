@@ -10,7 +10,7 @@ local ChestFolder = workspace:WaitForChild("ChestModels")
 local visitedChests = {}
 local SPEED = 300 -- studs per second
 
-ReplicatedStorage.Remotes.CommF_:InvokeServer("SetTeam","Pirates")
+ReplicatedStorage.Remotes.CommF_:InvokeServer("SetTeam", "Pirates")
 
 -- Find nearest unvisited chest
 local function getClosestChest(position)
@@ -47,6 +47,7 @@ end
 
 -- Server hop
 local function hopServer()
+	task.wait(1)
     local gameId = game.PlaceId
     local servers = {}
 
@@ -69,12 +70,9 @@ local function hopServer()
     if #servers > 0 then
         local chosen = servers[math.random(1, #servers)]
 
-        local scriptUrl = "https://pastebin.com/raw/YOUR_SCRIPT_HERE"
         if syn and syn.queue_on_teleport then
-            syn.queue_on_teleport(game:HttpGet(scriptUrl))
-        elseif queue_on_teleport then
-            queue_on_teleport(game:HttpGet(scriptUrl))
-        end
+            syn.queue_on_teleport(loadstring(game:HttpGet("https://raw.githubusercontent.com/bloxithic/scripts/refs/heads/main/BFChestFarm"))())
+		end
 
         TeleportService:TeleportToPlaceInstance(gameId, chosen, LocalPlayer)
     else
@@ -84,7 +82,7 @@ end
 
 -- Main loop
 task.spawn(function()
-    while task.wait(0.5) do
+    while task.wait(0.1) do
         local character = LocalPlayer.Character or LocalPlayer.CharacterAdded:Wait()
         local root = character:FindFirstChild("HumanoidRootPart")
 
