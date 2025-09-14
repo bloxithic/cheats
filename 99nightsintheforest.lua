@@ -10,6 +10,15 @@ local hrp = char:WaitForChild("HumanoidRootPart")
 
 local KillAura = false
 local KillAuraDistance = 50
+local bring, bringpos
+
+local function BringItem(Item)
+	replicated.RemoteEvents.RequestStartDraggingItem:FireServer(Item)
+	task.wait(0.05)
+	Item:PivotTo(bringpos)
+	task.wait(0.05)
+	replicated.RemoteEvents.StopDraggingItem:FireServer(Item)
+end
 
 local toolsDamageIDs = {
     ["Old Axe"] = "1_8982038982",
@@ -29,6 +38,11 @@ local Window = WindUI:CreateWindow({
 local MainTab = Window:Tab({
     Title = "Main",
     Icon = "house",
+})
+
+local BringTab = Window:Tab({
+    Title = "Bring",
+    Icon = "package",
 })
 
 local KillAuraSection = MainTab:Section({ 
@@ -61,6 +75,32 @@ local KillAuraDistanceSlider = MainTab:Slider({
     Callback = function(value)
         KillAuraDistance = value
     end
+})
+
+local Input = BringTab:Input({
+    Title = "Input",
+    Desc = "Input Description",
+    Value = "Default value",
+    InputIcon = "bird",
+    Type = "Input", -- or "Textarea"
+    Placeholder = "Enter text...",
+    Callback = function(input) 
+        bring = input
+    end
+})
+
+local Button = BringTab:Button({
+    Title = "Button",
+    Desc = "Test Button",
+    Locked = false,
+    Callback = function()
+		bringpos = hrp.CFrame
+        for _, v in ipairs(workspace.Items:GetChildren()) do
+			if v.Name == bring then
+				BringItem(v)
+			end
+		end
+	end
 })
 
 hum.Died:Connect(function()
