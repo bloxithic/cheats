@@ -1,0 +1,94 @@
+local Players = game:GetService("Players")
+local TweenService = game:GetService("TweenService")
+local TeleportService = game:GetService("TeleportService")
+local HttpService = game:GetService("HttpService")
+
+local LocalPlayer = Players.LocalPlayer
+local ChestFolder = workspace:WaitForChild("ChestModels")
+
+-- Keep track of visited chests
+local visitedChests = {}
+
+-- Find nearest unvisited chest
+local function getClosestChest(position)
+    local closest, distance = nil, math.huge
+    for _, chest in ipairs(ChestFolder:GetChildren()) do
+        if chest:IsA("Model") and chest.PrimaryPart and not visitedChests[chest] then
+            local dist = (position - chest.PrimaryPart.Position).Magnitude
+            if dist < distance then
+                closest, distance = chest, dist
+            end
+        end
+    end
+    return closest
+end
+
+-- Tween player to chest
+local function tweenToChest(chest)
+    local character = LocalPlayer.Character or LocalPlayer.CharacterAdded:Wait()
+    local root = character:WaitForChild("HumanoidRootPart")
+    if not chest or not chest.PrimaryPart then return end
+
+    local targetPos = chest.PrimaryPart.Position + Vector3.new(0, 5, 0)
+    local distance = (root.Position - targetPos).Magnitude
+    local travelTime = distance / 300 -- 300 studs/sec
+
+    local tweenInfo = TweenInfo.new(travelTime, Enum.EasingStyle.Linear)
+    local tween = TweenService:Create(root, tweenInfo, {CFrame = CFrame.new(targetPos)})
+    tween:Play()
+    tween.Completed:Wait()
+
+    visitedChests[chest] = true
+end
+
+-- Server hop
+local function hopServer()
+    local gameId = game.PlaceId
+    local servers = {}
+
+    local success, result = pcall(function()
+        return HttpService:JSONDecode(
+            game:HttpGet(string.format(
+                "https://games.roblox.com/v1/games/%d/servers/Public?sortOrder=Asc&limit=100", gameId
+            ))
+        )
+    end)
+
+    if success and result and result.data then
+        for _, server in ipairs(result.data) do
+            if server.playing < server.maxPlayers and server.id ~= game.JobId then
+                table.insert(servers, server.id)
+            end
+        end
+    end
+
+    if #servers > 0 then
+        local chosen = servers[math.random(1, #servers)]
+
+        if syn and syn.queue_on_teleport then
+            syn.queue_on_teleport(game:HttpGet("https://pastebin.com/raw/YOUR_SCRIPT_HERE"))
+        elseif queue_on_teleport then
+            queue_on_teleport(game:HttpGet("https://pastebin.com/raw/YOUR_SCRIPT_HERE"))
+        end
+
+        TeleportService:TeleportToPlaceInstance(gameId, chosen, LocalPlayer)
+    else
+        TeleportService:Teleport(gameId, LocalPlayer)
+    end
+end
+
+-- Main loop
+task.spawn(function()
+    while true do
+        local character = LocalPlayer.Character or LocalPlayer.CharacterAdded:Wait()
+        local root = character:FindFirstChild("HumanoidRootPart")
+
+        local chest = getClosestChest(root.Position)
+        if chest then
+            tweenToChest(chest)
+        else
+            hopServer()
+            break
+        end
+    end
+end)
