@@ -1,4 +1,5 @@
 local Players = game:GetService("Players")
+local ReplicatedStorage = game:GetService("ReplicatedStorage")
 local TweenService = game:GetService("TweenService")
 local TeleportService = game:GetService("TeleportService")
 local HttpService = game:GetService("HttpService")
@@ -6,8 +7,10 @@ local HttpService = game:GetService("HttpService")
 local LocalPlayer = Players.LocalPlayer
 local ChestFolder = workspace:WaitForChild("ChestModels")
 
--- Keep track of visited chests
 local visitedChests = {}
+local SPEED = 300 -- studs per second
+
+ReplicatedStorage.Remotes.CommF_:InvokeServer("SetTeam","Pirates")
 
 -- Find nearest unvisited chest
 local function getClosestChest(position)
@@ -23,7 +26,7 @@ local function getClosestChest(position)
     return closest
 end
 
--- Tween player to chest
+-- Tween to chest
 local function tweenToChest(chest)
     local character = LocalPlayer.Character or LocalPlayer.CharacterAdded:Wait()
     local root = character:WaitForChild("HumanoidRootPart")
@@ -31,10 +34,11 @@ local function tweenToChest(chest)
 
     local targetPos = chest.PrimaryPart.Position + Vector3.new(0, 5, 0)
     local distance = (root.Position - targetPos).Magnitude
-    local travelTime = distance / 300 -- 300 studs/sec
+    local travelTime = distance / SPEED
 
     local tweenInfo = TweenInfo.new(travelTime, Enum.EasingStyle.Linear)
     local tween = TweenService:Create(root, tweenInfo, {CFrame = CFrame.new(targetPos)})
+
     tween:Play()
     tween.Completed:Wait()
 
@@ -65,8 +69,11 @@ local function hopServer()
     if #servers > 0 then
         local chosen = servers[math.random(1, #servers)]
 
+        local scriptUrl = "https://pastebin.com/raw/YOUR_SCRIPT_HERE"
         if syn and syn.queue_on_teleport then
-            syn.queue_on_teleport(loadstring(game:HttpGet("https://raw.githubusercontent.com/bloxithic/scripts/refs/heads/main/BFChestFarm"))())
+            syn.queue_on_teleport(game:HttpGet(scriptUrl))
+        elseif queue_on_teleport then
+            queue_on_teleport(game:HttpGet(scriptUrl))
         end
 
         TeleportService:TeleportToPlaceInstance(gameId, chosen, LocalPlayer)
@@ -77,7 +84,7 @@ end
 
 -- Main loop
 task.spawn(function()
-    while true do
+    while task.wait(0.5) do
         local character = LocalPlayer.Character or LocalPlayer.CharacterAdded:Wait()
         local root = character:FindFirstChild("HumanoidRootPart")
 
