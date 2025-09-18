@@ -2,6 +2,7 @@ local WindUI = loadstring(game:HttpGet("https://github.com/Footagesus/WindUI/rel
 
 local ply = game:GetService("Players")
 local replicated = game:GetService("ReplicatedStorage")
+local eventsFolder = replicated:WaitForChild("RemoteEvents")
 
 local plr = ply.LocalPlayer
 local char = plr.Character or plr.CharacterAdded:Wait()
@@ -10,15 +11,7 @@ local hrp = char:WaitForChild("HumanoidRootPart")
 
 local KillAura = false
 local KillAuraDistance = 50
-local bring, bringpos
-
-local function BringItem(Item)
-	replicated.RemoteEvents.RequestStartDraggingItem:FireServer(Item)
-	task.wait(0.05)
-	Item:PivotTo(bringpos)
-	task.wait(0.05)
-	replicated.RemoteEvents.StopDraggingItem:FireServer(Item)
-end
+local bring, bringpos, tool, part
 
 local toolsDamageIDs = {
     ["Old Axe"] = "1_8982038982",
@@ -27,6 +20,40 @@ local toolsDamageIDs = {
     ["Chainsaw"] = "647_8992824875",
     ["Spear"] = "196_8999010016"
 }
+
+local function BringItem(Item)
+	eventsFolder.RequestStartDraggingItem:FireServer(Item)
+	task.wait(0.05)
+	Item:PivotTo(bringpos)
+	task.wait(0.05)
+	eventsFolder.StopDraggingItem:FireServer(Item)
+end
+
+task.spawn(function()
+	while task.wait() do
+		if KillAura then
+			tool = char:FindFirstChildOfClass("Tool")
+			if tool and toolsDamageIDs[tool.Name]  then
+				for _, v in ipairs(workspace.Characters:GetChildren()) do
+	                if v:IsA("Model") then
+	                    part = v:FindFirstChildOfClass("BasePart")
+	                    if part and (hrp.Position - part.Position).Magnitude <= KillAuraDistance then
+	                        pcall(function()
+	                            eventsFolder.ToolDamageObject:InvokeServer(
+	                                v,
+	                                tool.Name,
+	                                toolsDamageIDs[tool.Name],
+	                                CFrame.new(part.Position)
+	                            )
+	                        end)
+	                    end
+	                end
+	            end
+			end
+		end
+	end
+end)
+			
 
 local Window = WindUI:CreateWindow({
     Title = "Noxware",
@@ -77,22 +104,17 @@ local KillAuraDistanceSlider = MainTab:Slider({
     end
 })
 
-local Input = BringTab:Input({
-    Title = "Input",
-    Desc = "Input Description",
-    Value = "Default value",
-    InputIcon = "bird",
+local BringInput = BringTab:Input({
+    Title = "Item",
     Type = "Input", -- or "Textarea"
-    Placeholder = "Enter text...",
+    Placeholder = "Enter item name...",
     Callback = function(input) 
         bring = input
     end
 })
 
-local Button = BringTab:Button({
-    Title = "Button",
-    Desc = "Test Button",
-    Locked = false,
+local BringButton = BringTab:Button({
+    Title = "Bring Item",
     Callback = function()
 		bringpos = hrp.CFrame
         for _, v in ipairs(workspace.Items:GetChildren()) do
@@ -102,9 +124,3 @@ local Button = BringTab:Button({
 		end
 	end
 })
-
-hum.Died:Connect(function()
-	char = plr.Character or plr.CharacterAdded:Wait()
-	hum = char:WaitForChild("Humanoid")
-	hrp = char:WaitForChild("HumanoidRootPart")
-end)
