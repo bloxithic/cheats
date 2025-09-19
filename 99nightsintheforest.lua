@@ -35,15 +35,14 @@ task.spawn(function()
 			tool = char:FindFirstChildOfClass("Tool")
 			if tool and toolsDamageIDs[tool.Name]  then
 				for _, v in ipairs(workspace.Characters:GetChildren()) do
-	                if v:IsA("Model") then
-	                    part = v:FindFirstChildOfClass("BasePart")
-	                    if part and (hrp.Position - part.Position).Magnitude <= KillAuraDistance then
+	                if v:IsA("Model") and v.PrimaryPart then
+	                    if (v.PrimaryPart.Position - hrp.Position).Magnitude <= KillAuraDistance then
 	                        pcall(function()
 	                            eventsFolder.ToolDamageObject:InvokeServer(
 	                                v,
-	                                tool.Name,
+	                                tool,
 	                                toolsDamageIDs[tool.Name],
-	                                CFrame.new(part.Position)
+	                                hrp.CFrame
 	                            )
 	                        end)
 	                    end
