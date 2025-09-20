@@ -81,7 +81,7 @@ local BringTab = Window:Tab({
     Icon = "package",
 })
 
-local KillAuraSection = MainTab:Section({ 
+local KillAuraSection = PlayerTab:Section({ 
     Title = "Kill Aura",
     TextXAlignment = "Left",
 })
@@ -178,7 +178,7 @@ local InfJumpToggle = PlayerTab:Toggle({
                 hum:ChangeState(Enum.HumanoidStateType.Jumping)
             end)
         else
-            infJumpConnection:Disconnect() end
+            infJumpConnection:Disconnect()
             infJumpConnection = nil
         end
     end
